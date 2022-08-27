@@ -1,5 +1,5 @@
 const koa = require("koa");
-const cors = require("cors");
+const cors = require("koa2-cors");
 const router = require("./routes");
 require("./config");
 
