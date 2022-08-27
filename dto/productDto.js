@@ -3,7 +3,7 @@ const Joi = require("joi");
 module.exports = Joi.object({
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
-  dob: Joi.date(),
+  dob: Joi.string(),
   gender: Joi.string(),
   address: {
     current: Joi.string(),
@@ -22,8 +22,8 @@ module.exports = Joi.object({
     salary: Joi.number(),
     isContract: Joi.boolean(),
     contract: Joi.object({
-      startDate: Joi.date().allow(""),
-      endDate: Joi.date().allow(""),
+      startDate: Joi.string().allow(""),
+      endDate: Joi.string().allow(""),
     }),
   }),
   bankDetails: {

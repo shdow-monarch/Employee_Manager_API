@@ -42,7 +42,7 @@ const bankDetailsSchema = new Schema(
 const employeeListSchema = new Schema({
   firstName: String,
   lastName: String,
-  dob: Date,
+  dob: String,
   gender: String,
   address: addressSchema,
   city: String,
