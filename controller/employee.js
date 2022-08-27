@@ -1,21 +1,21 @@
 const _ = require("lodash");
-const Product = require("../model/product");
+const Employee = require("../model/employee");
 
-const ProductController = {
-  getAllProduct: async (ctx) => {
+const EmployeeController = {
+  getAllEmployee: async (ctx) => {
     try {
-      const products = await Product.find();
+      const employees = await Employee.find();
       ctx.response.status = 200;
-      ctx.body = products;
+      ctx.body = employees;
     } catch (error) {
       ctx.response.status = 500;
       ctx.body = error.message;
     }
   },
-  createProduct: async (ctx) => {
+  createEmployee: async (ctx) => {
     try {
-      const newProduct = new Product(ctx.request.body);
-      const result = await newProduct.save();
+      const newEmployee = new Employee(ctx.request.body);
+      const result = await newEmployee.save();
       ctx.response.status = 201;
       ctx.body = result;
     } catch (error) {
@@ -23,35 +23,35 @@ const ProductController = {
       ctx.body = error.message;
     }
   },
-  getProduct: async (ctx) => {
+  getEmployee: async (ctx) => {
     try {
-      const product = await Product.findById(ctx.request.params.id);
+      const employee = await Employee.findById(ctx.request.params.id);
       ctx.response.status = 200;
-      ctx.body = product;
+      ctx.body = employee;
     } catch (error) {
       ctx.response.status = 500;
       ctx.body = error.message;
     }
   },
-  updateProduct: async (ctx) => {
+  updateEmployee: async (ctx) => {
     try {
-      const updatedProduct = await Product.findByIdAndUpdate(
+      const updatedEmployee = await Employee.findByIdAndUpdate(
         ctx.request.params.id,
         ctx.request.body,
         { new: true }
       );
       ctx.response.status = 200;
-      ctx.body = await updatedProduct;
+      ctx.body = await updatedEmployee;
     } catch (error) {
       ctx.response.status = 422;
       ctx.body = error.message;
     }
   },
-  removeProduct: async (ctx) => {
+  removeEmployee: async (ctx) => {
     try {
-      await Product.findByIdAndDelete(ctx.request.params.id);
+      await Employee.findByIdAndDelete(ctx.request.params.id);
       ctx.response.status = 200;
-      ctx.body = "Product deleted";
+      ctx.body = "Employee removed";
     } catch (error) {
       ctx.response.status = 500;
       ctx.body = error.message;
@@ -59,4 +59,4 @@ const ProductController = {
   },
 };
 
-module.exports = ProductController;
+module.exports = EmployeeController;

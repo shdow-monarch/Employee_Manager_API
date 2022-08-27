@@ -1,14 +1,14 @@
-const Product = require("../model/product");
+const Employee = require("../model/employee");
 const _ = require("lodash");
 
 module.exports = async (ctx, next) => {
   try {
-    const product = await Product.findById(ctx.request.params.id);
-    if (!_.isEmpty(product)) {
+    const employee = await Employee.findById(ctx.request.params.id);
+    if (!_.isEmpty(employee)) {
       await next();
     } else {
       ctx.response.status = 404;
-      ctx.body = "Product not found";
+      ctx.body = "Employee not found";
     }
   } catch (error) {
     ctx.response.status = 500;

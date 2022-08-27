@@ -11,21 +11,21 @@ module.exports = Joi.object({
   },
   city: Joi.string(),
   state: Joi.string(),
-  zipCode: Joi.number(),
+  zipCode: Joi.string(),
   mobile: Joi.number(),
   email: Joi.string().email(),
-  employeeDetails: {
+  employeeDetails: Joi.object({
     department: Joi.string(),
     position: Joi.string(),
     type: Joi.string(),
     skills: Joi.array(),
     salary: Joi.number(),
     isContract: Joi.boolean(),
-    contract: {
-      startDate: Joi.string(),
-      endDate: Joi.string(),
-    },
-  },
+    contract: Joi.object({
+      startDate: Joi.date().allow(""),
+      endDate: Joi.date().allow(""),
+    }),
+  }),
   bankDetails: {
     bank: Joi.string(),
     branch: Joi.string(),
