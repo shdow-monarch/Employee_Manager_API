@@ -25,6 +25,13 @@ module.exports = Joi.object({
       startDate: Joi.string().allow(""),
       endDate: Joi.string().allow(""),
     }),
+    csvFile: Joi.object({
+      id: Joi.string().allow(""),
+      fileName: Joi.string().allow(""),
+      contentType: Joi.string().allow(""),
+      base64URL: Joi.string().allow(""),
+      size: Joi.number()
+    }).allow("{}")
   }),
   bankDetails: {
     bank: Joi.string(),

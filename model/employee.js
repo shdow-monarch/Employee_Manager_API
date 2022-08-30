@@ -1,20 +1,28 @@
 const { Schema, model } = require("mongoose");
+const { ObjectId } = require("mongodb");
 
 const addressSchema = new Schema(
   {
     current: String,
     permanent: String,
   },
-  { _id: false }
-);
+  { _id: false });
 
 const contractSchema = new Schema(
   {
     startDate: String,
     endDate: String,
   },
-  { _id: false }
-);
+  { _id: false });
+
+const csvFileSchema = new Schema({
+  id: String,
+  fileName: String,
+  contentType: String,
+  base64URL: String,
+  size: Number
+},
+  { _id: false })
 
 const employeeDetailsSchema = new Schema(
   {
@@ -25,9 +33,9 @@ const employeeDetailsSchema = new Schema(
     salary: Number,
     isContract: Boolean,
     contract: contractSchema,
+    csvFile: csvFileSchema
   },
-  { _id: false }
-);
+  { _id: false });
 
 const bankDetailsSchema = new Schema(
   {
@@ -36,8 +44,7 @@ const bankDetailsSchema = new Schema(
     accountNumber: Number,
     ifsc: String,
   },
-  { _id: false }
-);
+  { _id: false });
 
 const employeeListSchema = new Schema({
   firstName: String,
